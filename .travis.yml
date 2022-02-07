@@ -8,9 +8,14 @@ before_install:
 script: 
   - docker run agrimolizzi/personal-page-test npm test -- --watchAll=false
 
-after_success:
-  - docker build -t agrimolizzi/personal-page .
-  # Log in to the docker CLI
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  # Push the image to docker hub
-  - docker push agrimolizzi/personal-page
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "personal-page"
+  env: "Personalpage-env"
+  bucket_name: "elasticbeanstalk-us-east-2-324352693943"
+  bucket_path: "personal-page"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
