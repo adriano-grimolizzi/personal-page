@@ -13,10 +13,10 @@ script:
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
-  app: "personal-page"
-  env: "Personalpage-env"
+  app: "personal"
+  env: "Personal-env"
   bucket_name: "elasticbeanstalk-us-east-2-324352693943"
-  bucket_path: "personal-page"
+  bucket_path: "personal"
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
