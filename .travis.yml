@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t agrimolizzi/personal-page-test -f ./Dockerfile .
+  - docker build -t agrimolizzi/personal-page -f ./Dockerfile .
 
 # script: 
 #   - docker run -e CI=true agrimolizzi/personal-page-test npm test -- --watchAll=false
