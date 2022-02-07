@@ -5,10 +5,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t agrimolizzi/personal-page -f ./Dockerfile .
+  - docker build -t agrimolizzi/personal-page -f ./Dockerfile.dev .
 
-# script: 
-#   - docker run -e CI=true agrimolizzi/personal-page-test npm test -- --watchAll=false
+script: 
+  - docker run -e CI=true agrimolizzi/personal-page-test npm test -- --watchAll=false
 
 deploy:
   provider: elasticbeanstalk
