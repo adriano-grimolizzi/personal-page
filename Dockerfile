@@ -1,4 +1,4 @@
-FROM node:17-alpine as build
+FROM node:17-alpine 
 
 WORKDIR /app
 
@@ -15,5 +15,5 @@ RUN npm run build
 
 FROM nginx:stable-alpine
 EXPOSE 80
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=0 /app/build /usr/share/nginx/html
 COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
