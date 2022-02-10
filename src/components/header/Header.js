@@ -3,6 +3,7 @@ import { Link as RouterLink } from "react-router-dom";
 
 import HomeIcon from '@mui/icons-material/Home';
 import BusinessIcon from '@mui/icons-material/Business';
+import Adriano from "../../fighetto/title/Adriano";
 
 const headersData = [
     {
@@ -30,5 +31,5 @@ const getHeaderButtons = () => headersData.map(({ label, href, icon }) =>
 
 export default () =>
     <AppBar position="static">
-        <Toolbar>Adriano Grimolizzi's Page{getHeaderButtons()}</Toolbar>
+        <Toolbar><Adriano />{getHeaderButtons()}</Toolbar>
     </AppBar>

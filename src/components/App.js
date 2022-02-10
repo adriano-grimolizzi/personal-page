@@ -15,9 +15,16 @@ export default () =>
   <Router>
     <Box>
       <Header />
-      <Routes>
-        <Route path="/cv" element={<Cv />} />
-        <Route path="/" element={<Home />} />
-      </Routes>
+      <div style={style}>
+
+        <Routes >
+          <Route path="/cv" element={<Cv />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
     </Box>
   </Router>
+
+const style = {
+  marginLeft: '1rem'
+}
