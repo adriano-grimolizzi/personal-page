@@ -1,5 +1,5 @@
 import { Spring } from "react-spring"
-
+import React from "react";
 export default () =>
     <Spring
         from={{ opacity: 0, }}

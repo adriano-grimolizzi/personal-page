@@ -1,3 +1,5 @@
+import React from "react";
+
 export default () =>
     <>
         <p>Welcome to my webpage!</p>

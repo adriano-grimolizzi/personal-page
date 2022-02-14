@@ -1,0 +1,16 @@
+.pick-a-time {
+    width: 170px;
+    height: 25px;
+    text-align: center;
+    
+    border: 2px solid #3e434d;
+    border-radius: 5px;
+
+    background-color: #3e434d;
+    color: #dddedf;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+}

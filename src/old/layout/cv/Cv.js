@@ -1,3 +1,5 @@
+
+import React from "react";
 export default () =>
     <>
         <h1>Curriculum Vitae</h1>
