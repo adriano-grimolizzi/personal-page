@@ -6,7 +6,7 @@ app.use(cors());
 
 const port = 3002
 
-app.get('/login', (_req, res) => {
+app.post('/login', (_req, res) => {
     res.send({
         token: 'test123'
     })

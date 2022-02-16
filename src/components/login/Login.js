@@ -1,26 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
 
-import fetchToken from '../../services/loginService'
+import loginService from '../../services/loginService'
 
-export default () => {
+export default ({setToken}) => {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
 
-    const [fetchedData, setFetchedData] = useState();
-
     useEffect(() => {
         const getData = async () => {
-            const response = await axios.get(
-                'http://localhost:3002/login'
-            );
-            setFetchedData(response.data.token);
+            const response = await loginService.fetchToken()
+            console.log(response.data.token);
         };
         getData();
     }, []);
 
-    if (fetchedData)
-        console.log(fetchedData);
+    const handleSubmit = async event => {
+        event.preventDefault()
+        const token = await loginService.fetchToken({username, password})
+        setToken(token)
+    }
 
     return (
         <div className='login-wrapper'>
@@ -40,7 +38,9 @@ export default () => {
                         onChange={e => setPassword(e.target.value)} />
                 </label>
                 <div>
-                    <button type='submit'>Submit</button>
+                    <button 
+                        type='submit'
+                        onSubmit={handleSubmit}>Submit</button>
                 </div>
             </form>
         </div>
