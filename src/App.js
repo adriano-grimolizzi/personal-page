@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 import {
     BrowserRouter as Router,
@@ -10,15 +10,15 @@ import Dashboard from './components/dashboard/Dashboard'
 import Login from './components/login/Login';
 import Preferences from './components/preferences/Preferences'
 
+const getToken = () =>
+    JSON.parse(sessionStorage.getItem('token'))?.token
 
-export default () => {
-    const [token, setToken] = useState()
+const setToken = userToken =>
+    sessionStorage.setItem('token', JSON.stringify(userToken))
 
-    if (!token) {
-        return <Login setToken={setToken} />
-    }
-
-    return (
+export default () =>
+    !getToken() ?
+        <Login setToken={setToken} /> :
         <div className="wrapper">
             <h1>Application</h1>
             <Router>
@@ -27,6 +27,4 @@ export default () => {
                     <Route path="/preferences" element={<Preferences />} />
                 </Routes>
             </Router>
-        </div>
-    )
-}
+        </div>    

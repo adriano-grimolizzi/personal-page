@@ -1,30 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import loginService from '../../services/loginService'
 
-export default ({setToken}) => {
+export default ({ setToken }) => {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
 
-    useEffect(() => {
-        const getData = async () => {
-            const response = await loginService.fetchToken()
-            console.log(response.data.token);
-        };
-        getData();
-    }, []);
-
     const handleSubmit = async event => {
         event.preventDefault()
-        const token = await loginService.fetchToken({username, password})
-        setToken(token)
+        const response = await loginService.fetchToken({ username, password })
+        setToken(response.data.token)
     }
 
     return (
         <div className='login-wrapper'>
-
             <h1>Please Log In</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>
                     <p>Username</p>
                     <input
@@ -38,9 +29,7 @@ export default ({setToken}) => {
                         onChange={e => setPassword(e.target.value)} />
                 </label>
                 <div>
-                    <button 
-                        type='submit'
-                        onSubmit={handleSubmit}>Submit</button>
+                    <button type='submit'>Submit</button>
                 </div>
             </form>
         </div>
